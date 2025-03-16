@@ -8,8 +8,8 @@ public class Crowd
     public bool moveRight;
     [Space(5)]
 
-    public bool House;
-    public bool Bush;
-    public bool Roof;
-    public bool Pit;
+    public bool house;
+    public bool bush;
+    public bool roof;
+    public bool pit;
 }

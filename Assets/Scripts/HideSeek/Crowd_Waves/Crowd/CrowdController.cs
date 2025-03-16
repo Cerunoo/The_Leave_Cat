@@ -33,10 +33,10 @@ public class CrowdController : MonoBehaviour
         if (giveStats != null) stats = giveStats;
 
         typesChecks = new List<HideState>();
-        if (stats.House) typesChecks.Add(HideState.House);
-        if (stats.Bush) typesChecks.Add(HideState.Bush);
-        if (stats.Roof) typesChecks.Add(HideState.Roof);
-        if (stats.Pit) typesChecks.Add(HideState.Pit);
+        if (stats.house) typesChecks.Add(HideState.House);
+        if (stats.bush) typesChecks.Add(HideState.Bush);
+        if (stats.roof) typesChecks.Add(HideState.Roof);
+        if (stats.pit) typesChecks.Add(HideState.Pit);
 
         StartCoroutine(waitTimeTo());
 
@@ -110,6 +110,22 @@ public class CrowdController : MonoBehaviour
         {
             direction *= 2f;
         }
+
+        if (collision.tag == "Player" && GetHideInstance() == HideState.Nowhere && direction != 0)
+        {
+            // "Defeat, Girl Nowhere"
+            Debug.Log("Defeat, Girl Nowhere");
+            Debug.LogError("Defeat, Girl Nowhere");
+        }
+
+        if (collision.tag == "Shelter" && direction != 0)
+        {
+            Shelter shelter = collision.GetComponent<Shelter>();
+            if (typesChecks.Contains(shelter.hideType))
+            {
+                CheckShelter(shelter.CheckGirl());
+            }
+        }
     }
 
     private void CheckShelter(bool girlInside)
@@ -122,7 +138,7 @@ public class CrowdController : MonoBehaviour
         }
     }
 
-    public IEnumerator WaveIsOver()
+    public IEnumerator DestroyInqu()
     {
         yield return new WaitForSeconds(timeToSearch);
         Destroy(gameObject);

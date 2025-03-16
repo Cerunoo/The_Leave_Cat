@@ -2587,39 +2587,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   crowdPrefab: {fileID: 3544822036509627421, guid: 6c8cb502c4fb9ab44a66a8b4a502c4ff, type: 3}
   wavesPreset: {fileID: 4900000, guid: a4143fcd18ebb9049a4d2906fedbae0b, type: 3}
-  waves:
-  - timeTo: 1.93
-    crowds:
-    - timeTo: 1.87
-      speed: 0
-      moveRight: 0
-      House: 0
-      Bush: 0
-      Roof: 0
-      Pit: 0
-    - timeTo: 4.82
-      speed: 0
-      moveRight: 0
-      House: 0
-      Bush: 0
-      Roof: 1
-      Pit: 0
-  - timeTo: 2.03
-    crowds:
-    - timeTo: 1.15
-      speed: 0
-      moveRight: 0
-      House: 0
-      Bush: 1
-      Roof: 0
-      Pit: 0
-    - timeTo: 0
-      speed: 0
-      moveRight: 0
-      House: 1
-      Bush: 0
-      Roof: 0
-      Pit: 0
+  waves: []
 --- !u!1 &1986660688
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,5 +1,4 @@
 using UnityEngine;
-// using Newtonsoft.Json;
 
 public class WaveParser
 {
@@ -8,4 +7,10 @@ public class WaveParser
         WavesWrapper wrapper = JsonUtility.FromJson<WavesWrapper>(json);
         return wrapper.waves;
     }
+}
+
+[System.Serializable]
+public class WavesWrapper
+{
+    public Wave[] waves;
 }

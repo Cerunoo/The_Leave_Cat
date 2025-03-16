@@ -1,65 +1,50 @@
 {
-    "waves":
-    [
+    "waves": [
         {
-            "wave1":
-            {
-                "timeTo": 0,
-                "crowds":
-                [
-                    {
-                        "crowd1":
-                        {
-                            "timeTo": 0,
-                            "speed": 0,
-                            "moveRight": true,
-                            "house": false,
-                            "bush": false,
-                            "roof": false,
-                            "pit": false
-                        },
-                        "crowd2":
-                        {
-                            "timeTo": 0,
-                            "speed": 0,
-                            "moveRight": true,
-                            "house": false,
-                            "bush": false,
-                            "roof": false,
-                            "pit": false
-                        }
-                    }
-                ]
-            },
-            "wave2":
-            {
-                "timeTo": 0,
-                "crowds":
-                [
-                    {
-                        "crowd1":
-                        {
-                            "timeTo": 0,
-                            "speed": 0,
-                            "moveRight": true,
-                            "house": false,
-                            "bush": false,
-                            "roof": false,
-                            "pit": false
-                        },
-                        "crowd2":
-                        {
-                            "timeTo": 0,
-                            "speed": 0,
-                            "moveRight": true,
-                            "house": false,
-                            "bush": false,
-                            "roof": false,
-                            "pit": false
-                        }
-                    }
-                ]
-            }
+            "timeTo": 3,
+            "crowds": [
+                {
+                    "timeTo": 0,
+                    "speed": 10,
+                    "moveRight": true,
+                    "house": true,
+                    "bush": false,
+                    "roof": true,
+                    "pit": false
+                },
+                {
+                    "timeTo": 2,
+                    "speed": 10,
+                    "moveRight": false,
+                    "house": false,
+                    "bush": true,
+                    "roof": false,
+                    "pit": true
+                }
+            ]
+        },
+        {
+            "timeTo": 5,
+            "crowds": [
+                {
+                    "timeTo": 0,
+                    "speed": 5,
+                    "moveRight": true,
+                    "house": false,
+                    "bush": false,
+                    "roof": false,
+                    "pit": true
+                },
+                {
+                    "timeTo": 0,
+                    "speed": 5,
+                    "moveRight": false,
+                    "house": true,
+                    "bush": false,
+                    "roof": false,
+                    "pit": false
+                }
+            ]
         }
     ]
 }
