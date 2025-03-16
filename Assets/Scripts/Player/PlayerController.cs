@@ -85,6 +85,8 @@ public class PlayerController : MonoBehaviour, IPlayerController
     {
         transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
         facingRight = !facingRight;
+
+        DangerNotify.Instance.Flip();
     }
 
     #endregion

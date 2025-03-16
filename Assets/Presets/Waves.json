@@ -1,0 +1,65 @@
+{
+    "waves":
+    [
+        {
+            "wave1":
+            {
+                "timeTo": 0,
+                "crowds":
+                [
+                    {
+                        "crowd1":
+                        {
+                            "timeTo": 0,
+                            "speed": 0,
+                            "moveRight": true,
+                            "house": false,
+                            "bush": false,
+                            "roof": false,
+                            "pit": false
+                        },
+                        "crowd2":
+                        {
+                            "timeTo": 0,
+                            "speed": 0,
+                            "moveRight": true,
+                            "house": false,
+                            "bush": false,
+                            "roof": false,
+                            "pit": false
+                        }
+                    }
+                ]
+            },
+            "wave2":
+            {
+                "timeTo": 0,
+                "crowds":
+                [
+                    {
+                        "crowd1":
+                        {
+                            "timeTo": 0,
+                            "speed": 0,
+                            "moveRight": true,
+                            "house": false,
+                            "bush": false,
+                            "roof": false,
+                            "pit": false
+                        },
+                        "crowd2":
+                        {
+                            "timeTo": 0,
+                            "speed": 0,
+                            "moveRight": true,
+                            "house": false,
+                            "bush": false,
+                            "roof": false,
+                            "pit": false
+                        }
+                    }
+                ]
+            }
+        }
+    ]
+}
