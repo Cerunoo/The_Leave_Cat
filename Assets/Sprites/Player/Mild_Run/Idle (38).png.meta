@@ -51,7 +51,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 25
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -129,10 +129,10 @@ TextureImporter:
       name: Idle (38)_0
       rect:
         serializedVersion: 2
-        x: 276
-        y: 153
-        width: 3596
-        height: 3435
+        x: 68
+        y: 37
+        width: 901
+        height: 861
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
