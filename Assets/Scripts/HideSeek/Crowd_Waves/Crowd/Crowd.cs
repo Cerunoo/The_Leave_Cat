@@ -12,4 +12,5 @@ public class Crowd
     public bool bush;
     public bool roof;
     public bool pit;
+    public int walk;
 }

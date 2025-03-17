@@ -925,7 +925,7 @@ GameObject:
   - component: {fileID: 515909484}
   - component: {fileID: 515909481}
   - component: {fileID: 515909482}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -1670,7 +1670,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1, y: 0.7852093}
+  m_Size: {x: 4.15, y: 0.7852093}
   m_EdgeRadius: 0
 --- !u!1 &743995583
 GameObject:

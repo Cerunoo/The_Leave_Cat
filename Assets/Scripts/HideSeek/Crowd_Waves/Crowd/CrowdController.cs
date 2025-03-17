@@ -3,9 +3,10 @@ using System.Collections;
 using static PlayerHideFunc;
 using System.Collections.Generic;
 
-public class CrowdController : MonoBehaviour
+public class CrowdController : MonoBehaviour, ICrowdController
 {
     [SerializeField] private float shiftPos;
+    [SerializeField] private float speedDivergence = 5;
     [SerializeField, Space(5)] private AnimationCurve speedCurve;
     [SerializeField] private float decelerationTime;
 
@@ -16,12 +17,24 @@ public class CrowdController : MonoBehaviour
 
     [SerializeField, Space(5)] private Animator anim;
 
+    [SerializeField, Space(5)] private GameObject personsWrapper;
+    [SerializeField] private GameObject[] personsPrefabs;
+    public LayerMask toRightInqu;
+    public LayerMask toLeftInqu;
+
     [SerializeField, Header("Debug")] private Crowd stats;
     private List<HideState> typesChecks;
 
+    #region Interface
+
+    public float Speed => stats.speed;
+    public float Direction => direction;
+    public float SpeedCurve => speedCurve.Evaluate(timeOffensive / decelerationTime);
+
+    #endregion
+
     private void Update()
     {
-        transform.Translate(new Vector2(stats.speed * direction * speedCurve.Evaluate(timeOffensive / decelerationTime), 0) * Time.deltaTime);
         if (direction != 0) timeOffensive += Time.deltaTime;
     }
 
@@ -47,8 +60,120 @@ public class CrowdController : MonoBehaviour
         }
     }
 
+    private int ChoosePerson()
+    {
+        // Генерируем случайное число от 0 до 99
+        int randomValue = Random.Range(0, 100);
+
+        // Определяем, какое число вернуть в зависимости от случайного значения
+        if (randomValue < 15) // 0-14 (15%)
+        {
+            return 2;
+        }
+        else if (randomValue < 45) // 15-44 (30%)
+        {
+            return 1;
+        }
+        else // 45-99 (55%)
+        {
+            return 0;
+        }
+    }
+
     private void StartOffensive()
     {
+        // "Walk"
+        // "Torch" - house;
+        // "Shovel" - pit;
+        // "Scythe" - roof;
+        // "Pitchforks" - bush;
+
+        bool house = false;
+        bool pit = false;
+        bool roof = false;
+        bool bush = false;
+
+        int countPersons = 0;
+
+        // Spawn Walk Persons
+        for (int i = 0; i < stats.walk; i++)
+        {
+            float koafQueue = 1;
+            // if (i == 0) koafQueue *= 1f;
+            // else if (i == 0) koafQueue *= 1.25f;
+            // else if (i == 1) koafQueue *= 1.5f;
+            // else if (i == 2) koafQueue *= 1.75f;
+            // else if (i == 3) koafQueue *= 2f;
+            koafQueue *= 1f + 0.25f * countPersons;
+            if (countPersons == 0) koafQueue *= 0.65f;
+            koafQueue *= 0.5f;
+            koafQueue *= speedDivergence;
+
+            float startKoafQueue = 1 * 0.5f * speedDivergence;
+
+            int skinPerson = ChoosePerson();
+
+            CrowdPersonController person = Instantiate(personsPrefabs[skinPerson], new Vector2(0, 1f), Quaternion.identity).GetComponent<CrowdPersonController>();
+            person.transform.parent = personsWrapper.transform;
+            person.transform.localScale = new Vector2(0.2924308f * (stats.moveRight ? -1 : 1), 0.2924308f) * 1;
+            person.InitializeParent(gameObject.GetComponent<ICrowdController>(), GetComponent<CrowdController>(), stats.moveRight ? toRightInqu : toLeftInqu, koafQueue, startKoafQueue);
+
+            countPersons++;
+        }
+
+        // Spawn Persons
+        for (int i = 0; i < typesChecks.Count; i++)
+        {
+            float koafQueue = 1;
+            if (i == 0) koafQueue *= 1f;
+            koafQueue *= 1f + 0.25f * (countPersons + 1);
+            if (countPersons == 0) koafQueue *= 0.65f;
+            koafQueue *= 0.5f;
+            koafQueue *= speedDivergence;
+            
+            float startKoafQueue = 1 * 0.5f * speedDivergence;
+
+            int skinPerson = ChoosePerson();
+
+            CrowdPersonController person = Instantiate(personsPrefabs[skinPerson], new Vector2(0, 1f), Quaternion.identity).GetComponent<CrowdPersonController>();
+            person.transform.parent = personsWrapper.transform;
+            person.transform.localScale = new Vector2(0.2924308f * (stats.moveRight ? -1 : 1), 0.2924308f) * 1;
+            person.InitializeParent(gameObject.GetComponent<ICrowdController>(), GetComponent<CrowdController>(), stats.moveRight ? toRightInqu : toLeftInqu, koafQueue, startKoafQueue);
+
+            countPersons++;
+
+            if (stats.house && !house)
+            {
+                person.anim.SetTrigger("Torch");
+                house = true;
+                continue;
+            }
+            if (stats.pit && !pit)
+            {
+                person.anim.SetTrigger("Shovel");
+                pit = true;
+                continue;
+            }
+            if (stats.roof && !roof)
+            {
+                person.anim.SetTrigger("Scythe");
+                roof = true;
+                continue;
+            }
+            if (stats.bush && !bush)
+            {
+                person.anim.SetTrigger("Pitchforks");
+                bush = true;
+                continue;
+            }
+
+            // "Walk"
+            // "Torch" - house;
+            // "Shovel" - pit;
+            // "Scythe" - roof;
+            // "Pitchforks" - bush;
+        }
+
         // Transform
 
         Vector2 pos = PlayerController.Instance.transform.position;
@@ -68,7 +193,7 @@ public class CrowdController : MonoBehaviour
 
         // Render
 
-        anim.SetTrigger("Offensive");
+        // anim.SetTrigger("Offensive");
 
         if (stats.moveRight)
         {
@@ -80,23 +205,20 @@ public class CrowdController : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    public void CheckPlayer()
     {
-        if (collision.tag == "Shelter")
-        {
-            direction *= 0.5f;
-        }
-
-        if (collision.tag == "Player" && GetHideInstance() == HideState.Nowhere && direction != 0)
+        if (GetHideInstance() == HideState.Nowhere && direction != 0)
         {
             // "Defeat, Girl Nowhere"
             Debug.Log("Defeat, Girl Nowhere");
             Debug.LogError("Defeat, Girl Nowhere");
         }
+    }
 
-        if (collision.tag == "Shelter" && direction != 0)
+    public void StartCheckShelter(Shelter shelter)
+    {
+        if (direction != 0)
         {
-            Shelter shelter = collision.GetComponent<Shelter>();
             if (typesChecks.Contains(shelter.hideType))
             {
                 CheckShelter(shelter.CheckGirl());
@@ -104,28 +226,16 @@ public class CrowdController : MonoBehaviour
         }
     }
 
-    private void OnTriggerExit2D(Collider2D collision)
+    public bool CanCheckShelter(Shelter shelter)
     {
-        if (collision.tag == "Shelter")
+        if (direction != 0)
         {
-            direction *= 2f;
-        }
-
-        if (collision.tag == "Player" && GetHideInstance() == HideState.Nowhere && direction != 0)
-        {
-            // "Defeat, Girl Nowhere"
-            Debug.Log("Defeat, Girl Nowhere");
-            Debug.LogError("Defeat, Girl Nowhere");
-        }
-
-        if (collision.tag == "Shelter" && direction != 0)
-        {
-            Shelter shelter = collision.GetComponent<Shelter>();
             if (typesChecks.Contains(shelter.hideType))
             {
-                CheckShelter(shelter.CheckGirl());
+                return true;
             }
         }
+        return false;
     }
 
     private void CheckShelter(bool girlInside)
@@ -141,6 +251,13 @@ public class CrowdController : MonoBehaviour
     public IEnumerator DestroyInqu()
     {
         yield return new WaitForSeconds(timeToSearch);
-        Destroy(gameObject);
+        // Destroy(gameObject);
     }
+}
+
+public interface ICrowdController
+{
+    public float Speed { get; }
+    public float Direction { get; }
+    public float SpeedCurve { get; }
 }

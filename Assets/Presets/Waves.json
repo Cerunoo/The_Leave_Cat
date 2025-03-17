@@ -10,7 +10,8 @@
                     "house": true,
                     "bush": false,
                     "roof": true,
-                    "pit": false
+                    "pit": false,
+                    "walk": 1
                 },
                 {
                     "timeTo": 2,
@@ -19,7 +20,8 @@
                     "house": false,
                     "bush": true,
                     "roof": false,
-                    "pit": true
+                    "pit": true,
+                    "walk": 0
                 }
             ]
         },
@@ -33,16 +35,18 @@
                     "house": false,
                     "bush": false,
                     "roof": false,
-                    "pit": true
+                    "pit": true,
+                    "walk": 2
                 },
                 {
-                    "timeTo": 0,
-                    "speed": 5,
+                    "timeTo": 0.4,
+                    "speed": 10,
                     "moveRight": false,
                     "house": true,
                     "bush": false,
                     "roof": false,
-                    "pit": false
+                    "pit": false,
+                    "walk": 4
                 }
             ]
         }
