@@ -15,11 +15,11 @@ public class PlayerController : MonoBehaviour, IPlayerController
 
     private Rigidbody2D _rb;
 
-    private Vector2 _frameVelocity;
+    private float _frameVelocity;
 
     #region Interface
 
-    public Vector2 FrameDirection => new Vector2(_frameInput.Horizontal, _frameVelocity.y);
+    public Vector2 FrameDirection => new Vector2(_frameInput.Horizontal, _rb.linearVelocity.y);
     public bool IsMild => isMild;
 
     #endregion
@@ -63,12 +63,12 @@ public class PlayerController : MonoBehaviour, IPlayerController
         if (_frameInput.Horizontal == 0)
         {
             var deceleration = _stats.GroundDeceleration;
-            _frameVelocity.x = Mathf.MoveTowards(_frameVelocity.x, 0, deceleration * Time.fixedDeltaTime);
+            _frameVelocity = Mathf.MoveTowards(_frameVelocity, 0, deceleration * Time.fixedDeltaTime);
         }
         else
         {
             float speed = !isMild ? _stats.NormalSpeed : _stats.MildSpeed;
-            _frameVelocity.x = Mathf.MoveTowards(_frameVelocity.x, _frameInput.Horizontal * speed, _stats.Acceleration * Time.fixedDeltaTime);
+            _frameVelocity = Mathf.MoveTowards(_frameVelocity, _frameInput.Horizontal * speed, _stats.Acceleration * Time.fixedDeltaTime);
         }
 
         if (_frameInput.Horizontal > 0 && !facingRight)
@@ -91,7 +91,7 @@ public class PlayerController : MonoBehaviour, IPlayerController
 
     #endregion
 
-    private void ApplyMovement() => _rb.linearVelocity = _frameVelocity;
+    private void ApplyMovement() => _rb.linearVelocity = new Vector2(_frameVelocity, _rb.linearVelocity.y);
 }
 
 public struct FrameInput

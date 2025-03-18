@@ -5,9 +5,21 @@ public class Shelter : MonoBehaviour
 {
     [Space(5)] public HideState hideType;
 
+    [SerializeField, Space(5)] private SpriteRenderer sprite;
+    [SerializeField] private Material defGirl;
+    [SerializeField] private Material selectedGirl;
+
     private bool girlInside;
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void Update()
+    {
+        if (girlInside && PlayerController.Instance.GetComponent<PlayerHideFunc>().hideState == hideType)
+        sprite.material = selectedGirl;
+        else
+        sprite.material = defGirl;
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.tag == "Player")
         {

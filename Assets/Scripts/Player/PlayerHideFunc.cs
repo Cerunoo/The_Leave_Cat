@@ -5,35 +5,67 @@ public class PlayerHideFunc : MonoBehaviour
 {
     // Нигде, Дом, Куст, Крыша, Яма
     public enum HideState { Nowhere, House, Bush, Roof, Pit }
-    [SerializeField, Space(5)] private HideState hideState;
+    [Space(5)] public HideState hideState;
 
     [SerializeField] private TextMeshPro textState;
+    [SerializeField] private Animator anim;
 
-    public void SetHide(HideState state)
+    private void Update()
     {
-        switch(state)
+        if (Input.GetAxis("Horizontal") != 0 && hideState != HideState.Nowhere)
         {
-            case HideState.Nowhere:
-            hideState = HideState.Nowhere;
-            break;
+            SetHide(HideState.Nowhere);
+        } 
+    }
 
-            case HideState.House:
-            hideState = HideState.House;
-            break;
+    public void SetHide(HideState giveState)
+    {
+        if (Input.GetAxis("Horizontal") != 0)
+        SwitchCase(HideState.Nowhere);
+        else
+        SwitchCase(giveState);
 
-            case HideState.Bush:
-            hideState = HideState.Bush;
-            break;
+        void SwitchCase(HideState state)
+        {
+            if (hideState == state) return;
 
-            case HideState.Roof:
-            hideState = HideState.Roof;
-            break;
+            switch(state)
+            {
+                case HideState.Nowhere:
+                if (hideState == HideState.Bush || hideState == HideState.Pit)
+                {
+                    // Вызываеться из ключа аниматора Func PlayerHideFuncAnim.SetHideStateNowhereInsideAnim()
+                    // hideState = HideState.Nowhere;
+                    anim.SetTrigger("HideExit");
+                }
+                else
+                {
+                    hideState = HideState.Nowhere;
+                }
+                break;
 
-            case HideState.Pit:
-            hideState = HideState.Pit;
-            break;
+                case HideState.House:
+                hideState = HideState.House;
+                break;
+
+                case HideState.Bush:
+                hideState = HideState.Bush;
+                anim.SetTrigger("BushOrPit");
+                anim.ResetTrigger("HideExit");
+                break;
+
+                case HideState.Roof:
+                hideState = HideState.Roof;
+                break;
+
+                case HideState.Pit:
+                hideState = HideState.Pit;
+                anim.SetTrigger("BushOrPit");
+                anim.ResetTrigger("HideExit");
+                break;
+            }
+            textState.text = hideState.ToString();
         }
-        textState.text = hideState.ToString();
     }
 
     public HideState GetHide() => hideState;

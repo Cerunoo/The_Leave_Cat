@@ -18,6 +18,7 @@ public class CrowdController : MonoBehaviour, ICrowdController
     [SerializeField, Space(5)] private Animator anim;
 
     [SerializeField, Space(5)] private GameObject personsWrapper;
+    [SerializeField] private float personMultiScaleRange;
     [SerializeField] private GameObject[] personsPrefabs;
     public LayerMask toRightInqu;
     public LayerMask toLeftInqu;
@@ -116,6 +117,7 @@ public class CrowdController : MonoBehaviour, ICrowdController
             CrowdPersonController person = Instantiate(personsPrefabs[skinPerson], new Vector2(0, 1f), Quaternion.identity).GetComponent<CrowdPersonController>();
             person.transform.parent = personsWrapper.transform;
             person.transform.localScale = new Vector2(0.2924308f * (stats.moveRight ? -1 : 1), 0.2924308f) * 1;
+            person.transform.localScale = person.transform.localScale * Random.Range(0.9f, personMultiScaleRange);
             person.InitializeParent(gameObject.GetComponent<ICrowdController>(), GetComponent<CrowdController>(), stats.moveRight ? toRightInqu : toLeftInqu, koafQueue, startKoafQueue);
 
             countPersons++;
@@ -138,6 +140,7 @@ public class CrowdController : MonoBehaviour, ICrowdController
             CrowdPersonController person = Instantiate(personsPrefabs[skinPerson], new Vector2(0, 1f), Quaternion.identity).GetComponent<CrowdPersonController>();
             person.transform.parent = personsWrapper.transform;
             person.transform.localScale = new Vector2(0.2924308f * (stats.moveRight ? -1 : 1), 0.2924308f) * 1;
+            person.transform.localScale = person.transform.localScale * Random.Range(0.9f, personMultiScaleRange);
             person.InitializeParent(gameObject.GetComponent<ICrowdController>(), GetComponent<CrowdController>(), stats.moveRight ? toRightInqu : toLeftInqu, koafQueue, startKoafQueue);
 
             countPersons++;

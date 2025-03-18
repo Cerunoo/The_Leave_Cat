@@ -28,8 +28,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 3.4196124, y: 3.4196124, z: 3.4196124}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 3.9, y: 3.9, z: 3.9}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 5283820182603798721}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -195,6 +195,7 @@ MonoBehaviour:
   timeToSearch: 10
   anim: {fileID: 529017073732070183}
   personsWrapper: {fileID: 78761958394015574}
+  personMultiScaleRange: 1.12
   personsPrefabs:
   - {fileID: 4936219024623352600, guid: bcc7bed8f420d1746814459123ba744d, type: 3}
   - {fileID: 4936219024623352600, guid: 6d14368f16d44d146a748e7e4f44cbab, type: 3}
