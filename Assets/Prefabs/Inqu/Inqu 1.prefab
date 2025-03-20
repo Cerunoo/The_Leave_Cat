@@ -125,7 +125,7 @@ GameObject:
   - component: {fileID: 5513307404202220497}
   m_Layer: 7
   m_Name: Inqu 1
-  m_TagString: Untagged
+  m_TagString: Inqu
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -167,6 +167,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 72
   speedDivergenceTime: 0.5
+  hideColor: {r: 1, g: 1, b: 1, a: 0}
+  showColor: {r: 1, g: 1, b: 1, a: 1}
+  speedShowSprite: 7
 --- !u!70 &2330016847657161189
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

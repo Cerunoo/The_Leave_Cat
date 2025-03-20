@@ -253,7 +253,7 @@ public class CrowdController : MonoBehaviour, ICrowdController
 
     public IEnumerator DestroyInqu()
     {
-        yield return new WaitForSeconds(timeToSearch);
+        yield return new WaitForSeconds(timeToSearch + stats.timeTo);
         // Destroy(gameObject);
     }
 }

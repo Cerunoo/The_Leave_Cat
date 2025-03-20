@@ -1,52 +1,72 @@
 {
     "waves": [
         {
-            "timeTo": 3,
+            "timeTo": 1,
             "crowds": [
                 {
                     "timeTo": 0,
-                    "speed": 10,
+                    "speed": 17.5,
                     "moveRight": true,
                     "house": true,
                     "bush": false,
-                    "roof": true,
+                    "roof": false,
                     "pit": false,
-                    "walk": 1
+                    "walk": 2
                 },
                 {
-                    "timeTo": 2,
-                    "speed": 10,
+                    "timeTo": 6,
+                    "speed": 8.5,
+                    "moveRight": false,
+                    "house": false,
+                    "bush": false,
+                    "roof": true,
+                    "pit": true,
+                    "walk": 0
+                },
+                {
+                    "timeTo": 13,
+                    "speed": 12,
                     "moveRight": false,
                     "house": false,
                     "bush": true,
                     "roof": false,
                     "pit": true,
-                    "walk": 0
+                    "walk": 1
                 }
             ]
         },
         {
-            "timeTo": 5,
+            "timeTo": 4,
             "crowds": [
                 {
                     "timeTo": 0,
-                    "speed": 5,
+                    "speed": 17.5,
                     "moveRight": true,
-                    "house": false,
-                    "bush": false,
-                    "roof": false,
-                    "pit": true,
-                    "walk": 2
-                },
-                {
-                    "timeTo": 0.4,
-                    "speed": 10,
-                    "moveRight": false,
                     "house": true,
                     "bush": false,
                     "roof": false,
                     "pit": false,
-                    "walk": 4
+                    "walk": 2
+                },
+                {
+                    "timeTo": 6,
+                    "speed": 8.5,
+                    "moveRight": false,
+                    "house": false,
+                    "bush": false,
+                    "roof": true,
+                    "pit": true,
+                    "walk": 0
+                },
+                {
+                    "timeTo": 13,
+                    "speed": 12,
+                    "moveRight": false,
+                    "house": false,
+                    "bush": true,
+                    "roof": false,
+                    "pit": true,
+                    "walk": 1
                 }
             ]
         }

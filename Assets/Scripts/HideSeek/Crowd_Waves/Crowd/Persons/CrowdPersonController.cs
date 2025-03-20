@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class CrowdPersonController : MonoBehaviour
 {
@@ -15,11 +16,19 @@ public class CrowdPersonController : MonoBehaviour
     private float koafSpeedMyIndexQueue;
     private float startKoafSpeedMyIndexQueue;
 
+    [SerializeField, Space(5)] private Color hideColor;
+    [SerializeField] private Color showColor;
+    [SerializeField] private float speedShowSprite;
+    private SpriteRenderer sprite;
+
     private float koafSlow = 1;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        sprite = GetComponentInChildren<SpriteRenderer>();
+
+        sprite.color = hideColor;
     }
 
     // Инициализировать родителя при Instantiate
@@ -76,6 +85,29 @@ public class CrowdPersonController : MonoBehaviour
         if (collision.tag == "Shelter")
         {
             koafSlow = 1;
+        }
+    }
+
+    public void HideSprite()
+    {
+        if (gameObject.activeInHierarchy) StartCoroutine(Transparency(hideColor));
+    }
+
+    public void ShowSprite()
+    {
+        if (gameObject.activeInHierarchy) StartCoroutine(Transparency(showColor));
+    }
+
+    private IEnumerator Transparency(Color color)
+    {
+        while (sprite.color.a != color.a)
+        {
+            Color updateColor = sprite.color;
+            updateColor.a = Mathf.MoveTowards(updateColor.a, color.a, speedShowSprite * Time.deltaTime);
+
+            sprite.color = updateColor;
+
+            yield return null;
         }
     }
 }

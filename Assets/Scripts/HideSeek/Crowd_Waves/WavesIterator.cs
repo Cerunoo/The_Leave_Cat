@@ -23,7 +23,6 @@ public class WavesManager : MonoBehaviour
         {
             yield return new WaitForSeconds(wave.timeTo);
             yield return StartCoroutine(WavePassage(wave));
-            
         }
     }
 

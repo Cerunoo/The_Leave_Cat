@@ -192,7 +192,7 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   decelerationTime: 0.8
-  timeToSearch: 10
+  timeToSearch: 0
   anim: {fileID: 529017073732070183}
   personsWrapper: {fileID: 78761958394015574}
   personMultiScaleRange: 1.12
