@@ -137,7 +137,7 @@ MonoBehaviour:
   hideType: 2
   sprite: {fileID: 945958621779544532}
   defGirl: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
-  selectedGirl: {fileID: 2100000, guid: 02ffbea420f33e54a9a4aaa6088f4d91, type: 2}
+  selectedGirl: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
 --- !u!61 &8829482540863535019
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour, IPlayerController
     [Header("States")]
     public bool facingRight;
     public bool isMild;
+    public bool blockMove;
 
     private FrameInput _frameInput;
 
@@ -38,7 +39,7 @@ public class PlayerController : MonoBehaviour, IPlayerController
 
     private void GatherInput()
     {
-        float inputHorizontal = Input.GetAxis("Horizontal");
+        float inputHorizontal = !blockMove ? Input.GetAxis("Horizontal") : 0;
 
         _frameInput = new FrameInput
         {

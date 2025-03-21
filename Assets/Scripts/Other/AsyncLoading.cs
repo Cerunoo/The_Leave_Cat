@@ -51,6 +51,8 @@ public class AsyncLoading : MonoBehaviour
                     StartCoroutine(animationProgressText());
                     IEnumerator animationProgressText()
                     {
+                        yield return new WaitForSeconds(1f);
+
                         string[] frames = new string[]{ "", "p", "pr", "pre", "pres", "press", "press.", "press.." };
 
                         string step = "  ";

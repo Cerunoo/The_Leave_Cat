@@ -137,7 +137,7 @@ MonoBehaviour:
   hideType: 2
   sprite: {fileID: 5336882309435570421}
   defGirl: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
-  selectedGirl: {fileID: 2100000, guid: 02ffbea420f33e54a9a4aaa6088f4d91, type: 2}
+  selectedGirl: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
 --- !u!61 &3445741475929972768
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -172,7 +172,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0.40727162}
+  m_Offset: {x: -0.048642114, y: 0.3650254}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -182,7 +182,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1, y: 1.814543}
+  m_Size: {x: 0.9, y: 1.8990355}
   m_EdgeRadius: 0
 --- !u!50 &3938119876422626318
 Rigidbody2D:

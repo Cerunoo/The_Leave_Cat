@@ -212,8 +212,6 @@ public class CrowdController : MonoBehaviour, ICrowdController
     {
         if (GetHideInstance() == HideState.Nowhere && direction != 0)
         {
-            // "Defeat, Girl Nowhere"
-            Debug.Log("Defeat, Girl Nowhere");
             Debug.LogError("Defeat, Girl Nowhere");
         }
     }
@@ -245,8 +243,6 @@ public class CrowdController : MonoBehaviour, ICrowdController
     {
         if (girlInside)
         {
-            // "Defeat, Girl Inside"
-            Debug.Log("Defeat, Girl Inside");
             Debug.LogError("Defeat, Girl Inside");
         }
     }

@@ -90,7 +90,7 @@ public class CrowdPersonController : MonoBehaviour
 
     public void HideSprite()
     {
-        if (gameObject.activeInHierarchy) StartCoroutine(Transparency(hideColor));
+        // if (gameObject.activeInHierarchy) StartCoroutine(Transparency(hideColor));
     }
 
     public void ShowSprite()
