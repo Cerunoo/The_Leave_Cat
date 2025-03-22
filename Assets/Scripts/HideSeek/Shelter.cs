@@ -15,6 +15,7 @@ public class Shelter : MonoBehaviour
     {
         yield return new WaitForSeconds(0.5f);
         girlInside = false;
+        Debug.Log("");
     }
 
     private PlayerHideFunc hideFunc;
