@@ -5,8 +5,11 @@ public class TimePanel : MonoBehaviour
 {
     [SerializeField] private Text countupText;
 
+    private float time;
+
     private void Update()
     {
-        countupText.text = Time.time.ToString("F0") + "s";
+        time += Time.deltaTime;
+        countupText.text = time.ToString("F0") + "s";
     }
 }
