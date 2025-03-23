@@ -138,6 +138,7 @@ MonoBehaviour:
   sprite: {fileID: 6139226326228011100}
   defGirl: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   selectedGirl: {fileID: 2100000, guid: 02ffbea420f33e54a9a4aaa6088f4d91, type: 2}
+  delayHide: 0.85
 --- !u!61 &4474522705419820431
 BoxCollider2D:
   m_ObjectHideFlags: 0

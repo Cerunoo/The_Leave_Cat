@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: b9e3d562449c4934497c9e242190c310
+guid: 6c848d435cf9b4a4bb977269bc9e7533
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 7210465556600605624
-    second: Lightning (3)_0
+      213: -488355835459182943
+    second: Lightning (5)_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -48,7 +48,7 @@ TextureImporter:
   compressionQuality: 50
   spriteMode: 2
   spriteExtrude: 1
-  spriteMeshType: 1
+  spriteMeshType: 0
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 100
@@ -87,12 +87,12 @@ TextureImporter:
     buildTarget: Standalone
     maxTextureSize: 2048
     resizeAlgorithm: 0
-    textureFormat: -1
+    textureFormat: 12
     textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
-    overridden: 0
+    overridden: 1
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
@@ -126,13 +126,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Lightning (3)_0
+      name: Lightning (5)_0
       rect:
         serializedVersion: 2
         x: 84
-        y: 84
-        width: 784
-        height: 807
+        y: 76
+        width: 814
+        height: 823
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,8 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 8bb4e569838b01460800000000000000
-      internalID: 7210465556600605624
+      spriteID: 1ae577f74f20939f0800000000000000
+      internalID: -488355835459182943
       vertices: []
       indices: 
       edges: []
@@ -160,7 +160,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Lightning (5)_0: -488355835459182943
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -10,10 +10,12 @@ public class Shelter : MonoBehaviour
     [SerializeField] private Material defGirl;
     [SerializeField] private Material selectedGirl;
 
+    [SerializeField, Space(5)] float delayHide = 0.5f;
+
     private bool girlInside;
     public IEnumerator ResetGirlInside()
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(delayHide);
         girlInside = false;
         Debug.Log("");
     }
