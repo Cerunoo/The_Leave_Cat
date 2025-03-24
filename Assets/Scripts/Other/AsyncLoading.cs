@@ -18,7 +18,24 @@ public class AsyncLoading : MonoBehaviour
         if (SceneManager.GetActiveScene().buildIndex == 0)
         {
             Screen.fullScreen = true;
+            Cursor.lockState = CursorLockMode.Locked;
             StartCoroutine(LoadAsync(1));
+        }
+    }
+
+    private void Update()
+    {
+        if (buttonActiveScene.interactable == true)
+        {
+            if (Input.GetKey(KeyCode.Space)) pressActiveScene();
+        }
+
+        if (Input.GetKey(KeyCode.Escape))
+        {
+            #if UNITY_EDITOR
+            UnityEditor.EditorApplication.isPlaying = false;
+            #endif
+            Application.Quit();
         }
     }
 
@@ -51,9 +68,10 @@ public class AsyncLoading : MonoBehaviour
                     StartCoroutine(animationProgressText());
                     IEnumerator animationProgressText()
                     {
-                        yield return new WaitForSeconds(1f);
+                        yield return new WaitForSeconds(0.9f);
 
-                        string[] frames = new string[]{ "", "p", "pr", "pre", "pres", "press", "press.", "press.." };
+                        string[] frames = new string[]{ "", "p", "pr", "pre", "pres", "press", "press s", "press sp", "press spa", "press spac", "press spac", "press space",
+                        "press space t", "press space to", "press space to s", "press space to st", "press space to sta", "press space to star", "press space to start", "press space to start/", "press space to start.. //"};
 
                         string step = "  ";
                         for (int i = 0; i < 12; i++)

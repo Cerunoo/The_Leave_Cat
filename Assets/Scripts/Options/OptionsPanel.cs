@@ -9,11 +9,13 @@ public class OptionsPanel : MonoBehaviour
     private void Start()
     {
         anim = GetComponent<Animator>();
+
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.P))
         {
             if (!open)
             OpenPanel();
@@ -27,6 +29,8 @@ public class OptionsPanel : MonoBehaviour
         anim.SetBool("show", true);
         Time.timeScale = 0f;
         open = true;
+
+        Cursor.lockState = CursorLockMode.None;
     }
 
     public void ClosePanel()
@@ -34,5 +38,7 @@ public class OptionsPanel : MonoBehaviour
         anim.SetBool("show", false);
         Time.timeScale = 1f;
         open = false;
+
+        Cursor.lockState = CursorLockMode.Locked;
     }
 }

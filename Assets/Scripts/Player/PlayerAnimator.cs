@@ -2,6 +2,9 @@ using UnityEngine;
 
 public class PlayerAnimator : MonoBehaviour
 {
+    [SerializeField] private float _maxTilt = 5;
+    [SerializeField] private float _tiltSpeed = 20;
+
     // [Header("Particles")]
     // [SerializeField] private ParticleSystem _moveParticles;
 
@@ -22,6 +25,7 @@ public class PlayerAnimator : MonoBehaviour
     private void Update()
     {
         HandleMove();
+        HandleCharacterTilt();
     }
 
     private void HandleMove()
@@ -30,6 +34,12 @@ public class PlayerAnimator : MonoBehaviour
         _anim.SetBool(isRunningKey, !_player.IsMild ? inputStrength > 0 : false);
         _anim.SetBool(isMildKey, _player.IsMild ? inputStrength > 0 : false);
         // _moveParticles.transform.localScale = Vector3.MoveTowards(_moveParticles.transform.localScale, Vector3.one * inputStrength, 2 * Time.deltaTime);
+    }
+
+    private void HandleCharacterTilt()
+    {
+        var runningTilt = Quaternion.Euler(0, 0, _maxTilt * _player.FrameDirection.x);
+        _anim.transform.up = Vector3.RotateTowards(_anim.transform.up, runningTilt * Vector2.up, _tiltSpeed * Time.deltaTime, 0f);
     }
 
     private static readonly int isRunningKey = Animator.StringToHash("isRunning");

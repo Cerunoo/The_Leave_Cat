@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using static PlayerHideFunc;
 
 public class CrowdPersonController : MonoBehaviour
 {
@@ -21,14 +22,17 @@ public class CrowdPersonController : MonoBehaviour
     [SerializeField] private float speedShowSprite;
     private SpriteRenderer sprite;
 
+    public delegate void SeekTrigger(CrowdPersonController person);
+    private SeekTrigger seekTrigger;
+
     private float koafSlow = 1;
+
+    private HideState myHideCheck;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         sprite = GetComponentInChildren<SpriteRenderer>();
-
-        sprite.color = hideColor;
     }
 
     // Инициализировать родителя при Instantiate
@@ -52,6 +56,18 @@ public class CrowdPersonController : MonoBehaviour
         startKoafSpeedMyIndexQueue = speedQueueBase;
     }
 
+    public void ChooseTrigger(SeekTrigger seekVoid = null)
+    {
+        seekTrigger = seekVoid;
+    }
+
+    public void InitializeHideCheck(HideState giveHideCheck)
+    {
+        myHideCheck = giveHideCheck;
+
+        if (myHideCheck != HideState.House) sprite.color = hideColor;
+    }
+
     public void InitializeWeapon(string typeSearch)
     {
         anim.SetTrigger(typeSearch);
@@ -65,7 +81,7 @@ public class CrowdPersonController : MonoBehaviour
         rb.linearVelocity = new Vector2(_parent.Speed * _parent.Direction * _parent.SpeedCurve * koafSlow * koafSpeedMyIndexQueue * 30, 0) * Time.deltaTime;
     }
 
-    private void OnTriggerStay2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "Player")
         {
@@ -75,14 +91,40 @@ public class CrowdPersonController : MonoBehaviour
         if (collision.tag == "Shelter" && parentObject.CanCheckShelter(collision.GetComponent<Shelter>()))
         {
             koafSlow = 0.5f;
+            if (seekTrigger != null && CanCheckShelterForMyType(collision.GetComponent<Shelter>()))
+            {
+                seekTrigger(this);
+            }
 
+            parentObject.StartCheckShelter(collision.GetComponent<Shelter>());
+        }
+    }
+
+    private bool CanCheckShelterForMyType(Shelter shelter)
+    {
+        if (shelter.hideType == myHideCheck)
+        {
+            return true;
+        }
+        return false;
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.tag == "Player")
+        {
+            parentObject.CheckPlayer();
+        }
+
+        if (collision.tag == "Shelter" && parentObject.CanCheckShelter(collision.GetComponent<Shelter>()))
+        {
             parentObject.StartCheckShelter(collision.GetComponent<Shelter>());
         }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.tag == "Shelter")
+        if (collision.tag == "Shelter" && parentObject.CanCheckShelter(collision.GetComponent<Shelter>()))
         {
             koafSlow = 1;
         }

@@ -120,6 +120,9 @@ public class CrowdController : MonoBehaviour, ICrowdController
             person.transform.localScale = person.transform.localScale * Random.Range(0.9f, personMultiScaleRange);
             person.InitializeParent(gameObject.GetComponent<ICrowdController>(), GetComponent<CrowdController>(), stats.moveRight ? toRightInqu : toLeftInqu, koafQueue, startKoafQueue);
 
+            if (typesChecks.Contains(HideState.House) == false)
+            person.InitializeHideCheck(HideState.Nowhere);
+
             countPersons++;
         }
 
@@ -147,25 +150,33 @@ public class CrowdController : MonoBehaviour, ICrowdController
 
             if (stats.house && !house)
             {
-                person.anim.SetTrigger("Torch");
+                TorchTrigger(person);
+                person.ChooseTrigger(TorchTrigger);
+                person.InitializeHideCheck(HideState.House);
                 house = true;
                 continue;
             }
             if (stats.pit && !pit)
             {
-                person.anim.SetTrigger("Shovel");
+                ShovelTrigger(person);
+                person.ChooseTrigger(ShovelTrigger);
+                person.InitializeHideCheck(HideState.Pit);
                 pit = true;
                 continue;
             }
             if (stats.roof && !roof)
             {
-                person.anim.SetTrigger("Scythe");
+                ScytheTrigger(person);
+                person.ChooseTrigger(ScytheTrigger);
+                person.InitializeHideCheck(HideState.Roof);
                 roof = true;
                 continue;
             }
             if (stats.bush && !bush)
             {
-                person.anim.SetTrigger("Pitchforks");
+                PitchforksTrigger(person);
+                person.ChooseTrigger(PitchforksTrigger);
+                person.InitializeHideCheck(HideState.Bush);
                 bush = true;
                 continue;
             }
@@ -207,6 +218,11 @@ public class CrowdController : MonoBehaviour, ICrowdController
             DangerNotify.Instance.CallRightDanger();
         }
     }
+
+    private void TorchTrigger(CrowdPersonController person) => person.anim.SetTrigger("Torch");
+    private void ShovelTrigger(CrowdPersonController person) => person.anim.SetTrigger("Shovel");
+    private void ScytheTrigger(CrowdPersonController person) => person.anim.SetTrigger("Scythe");
+    private void PitchforksTrigger(CrowdPersonController person) => person.anim.SetTrigger("Pitchforks");
 
     public void CheckPlayer()
     {
