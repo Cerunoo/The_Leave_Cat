@@ -15,10 +15,14 @@ public class AsyncLoading : MonoBehaviour
 
     private void Awake()
     {
+        Screen.fullScreen = true;
+        Cursor.lockState = CursorLockMode.Locked;
+    }
+
+    private void Start()
+    {
         if (SceneManager.GetActiveScene().buildIndex == 0)
         {
-            Screen.fullScreen = true;
-            Cursor.lockState = CursorLockMode.Locked;
             StartCoroutine(LoadAsync(1));
         }
     }
