@@ -12,6 +12,8 @@ public class Shelter : MonoBehaviour
 
     [SerializeField, Space(5)] float delayHide = 0.5f;
 
+    private AudioSource sz;
+
     private bool girlInside;
     public IEnumerator ResetGirlInside()
     {
@@ -24,6 +26,8 @@ public class Shelter : MonoBehaviour
     private void Start()
     {
         hideFunc = PlayerController.Instance.GetComponent<PlayerHideFunc>();
+
+        sz = GetComponent<AudioSource>();
     }
 
     private void Update()
@@ -40,6 +44,8 @@ public class Shelter : MonoBehaviour
         {
             SetHideInstance(hideType, this);
             girlInside = true;
+
+            sz.Play();
         }
     }
 

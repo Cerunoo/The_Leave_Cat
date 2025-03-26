@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using static PlayerHideFunc;
+using Unity.VisualScripting;
 
 public class CrowdPersonController : MonoBehaviour
 {
@@ -29,10 +30,14 @@ public class CrowdPersonController : MonoBehaviour
 
     private HideState myHideCheck;
 
+    private AudioSource sz;
+    [SerializeField] private AudioClip plevok;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         sprite = GetComponentInChildren<SpriteRenderer>();
+        sz = GetComponent<AudioSource>();
     }
 
     // Инициализировать родителя при Instantiate
@@ -73,6 +78,21 @@ public class CrowdPersonController : MonoBehaviour
         anim.SetTrigger(typeSearch);
     }
 
+    private bool yaFirst;
+    public void InitializeSound(bool right, bool first)
+    {
+        if (right)
+        {
+            sz.panStereo = -1;
+        }
+        else
+        {
+            sz.panStereo = 1;
+        }
+
+        yaFirst = first;
+    }
+
     private void FixedUpdate()
     {
         koafSpeedMyIndexQueue = Mathf.MoveTowards(koafSpeedMyIndexQueue, startKoafSpeedMyIndexQueue, speedDivergenceTime * Time.deltaTime);
@@ -97,6 +117,18 @@ public class CrowdPersonController : MonoBehaviour
             }
 
             parentObject.StartCheckShelter(collision.GetComponent<Shelter>());
+
+            if (yaFirst && insideLightTrigger && plevok != null)
+            {
+                sz.PlayOneShot(plevok);
+                plevok = null;
+            }
+        }
+
+        if (collision.tag == "PlayerLightTrigger")
+        {
+            sz.Play();
+            insideLightTrigger = true;
         }
     }
 
@@ -122,11 +154,18 @@ public class CrowdPersonController : MonoBehaviour
         }
     }
 
+    bool insideLightTrigger = false;
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.tag == "Shelter" && parentObject.CanCheckShelter(collision.GetComponent<Shelter>()))
         {
             koafSlow = 1;
+        }
+
+        if (collision.tag == "PlayerLightTrigger")
+        {
+            sz.Stop();
+            insideLightTrigger = false;
         }
     }
 

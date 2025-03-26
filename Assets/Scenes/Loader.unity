@@ -954,7 +954,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Escape to get out=>
+  m_Text: " \u0447\u0442\u043E\u0431\u044B \u0432\u044B\u0439\u0442\u0438 Escape=>"
 --- !u!222 &720271755
 CanvasRenderer:
   m_ObjectHideFlags: 0

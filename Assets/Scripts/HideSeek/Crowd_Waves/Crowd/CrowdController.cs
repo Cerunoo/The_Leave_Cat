@@ -120,6 +120,8 @@ public class CrowdController : MonoBehaviour, ICrowdController
             person.transform.localScale = person.transform.localScale * Random.Range(0.9f, personMultiScaleRange);
             person.InitializeParent(gameObject.GetComponent<ICrowdController>(), GetComponent<CrowdController>(), stats.moveRight ? toRightInqu : toLeftInqu, koafQueue, startKoafQueue);
 
+            person.InitializeSound(stats.moveRight, i == 0);
+
             if (typesChecks.Contains(HideState.House) == false)
             person.InitializeHideCheck(HideState.Nowhere);
 
@@ -145,6 +147,8 @@ public class CrowdController : MonoBehaviour, ICrowdController
             person.transform.localScale = new Vector2(0.2924308f * (stats.moveRight ? -1 : 1), 0.2924308f) * 1;
             person.transform.localScale = person.transform.localScale * Random.Range(0.9f, personMultiScaleRange);
             person.InitializeParent(gameObject.GetComponent<ICrowdController>(), GetComponent<CrowdController>(), stats.moveRight ? toRightInqu : toLeftInqu, koafQueue, startKoafQueue);
+
+            person.InitializeSound(stats.moveRight, false);
 
             countPersons++;
 

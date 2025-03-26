@@ -11,6 +11,8 @@ public class PlayerAnimator : MonoBehaviour
     // [Header("Audio Clips"), SerializeField]
     // private AudioClip[] _footsteps;
 
+    private AudioSource sz;
+
     private Animator _anim;
     // private AudioSource _source;
     private IPlayerController _player;
@@ -20,6 +22,8 @@ public class PlayerAnimator : MonoBehaviour
         _anim = GetComponent<Animator>();
         // _source = GetComponent<AudioSource>();
         _player = GetComponentInParent<IPlayerController>();
+
+        sz = GetComponent<AudioSource>();
     }
 
     private void Update()
@@ -28,12 +32,24 @@ public class PlayerAnimator : MonoBehaviour
         HandleCharacterTilt();
     }
 
+    public bool play = false;
     private void HandleMove()
     {
         var inputStrength = Mathf.Abs(_player.FrameDirection.x);
         _anim.SetBool(isRunningKey, !_player.IsMild ? inputStrength > 0 : false);
         _anim.SetBool(isMildKey, _player.IsMild ? inputStrength > 0 : false);
         // _moveParticles.transform.localScale = Vector3.MoveTowards(_moveParticles.transform.localScale, Vector3.one * inputStrength, 2 * Time.deltaTime);
+
+        if (inputStrength != 0 && !play)
+        {
+            sz.Play();
+            play = true;
+        }
+        if (inputStrength == 0 && play)
+        {
+            sz.Stop();
+            play = false;
+        }
     }
 
     private void HandleCharacterTilt()

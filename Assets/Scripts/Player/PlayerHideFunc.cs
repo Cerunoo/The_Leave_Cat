@@ -13,6 +13,14 @@ public class PlayerHideFunc : MonoBehaviour
 
     private Shelter onlyShelter;
 
+    private AudioSource sz;
+    [SerializeField, Space(5)] private AudioClip[] screamers;
+
+    private void Start()
+    {
+        sz = GetComponent<AudioSource>();
+    }
+
     private void Update()
     {
         if (Input.GetAxis("Horizontal") != 0 && hideState != HideState.Nowhere)
@@ -34,30 +42,35 @@ public class PlayerHideFunc : MonoBehaviour
             // Вызываеться из ключа аниматора Func PlayerHideFuncAnim.SetHideStateNowhereInsideAnim()
             // hideState = HideState.Nowhere;
             anim.SetTrigger("HideExit");
+            sz.Stop();
             break;
 
             case HideState.House:
             hideState = HideState.House;
             anim.SetTrigger("House");
             anim.ResetTrigger("HideExit");
+            sz.PlayDelayed(1f);
             break;
 
             case HideState.Bush:
             hideState = HideState.Bush;
             anim.SetTrigger("Bush");
             anim.ResetTrigger("HideExit");
+            sz.PlayOneShot(screamers[1]);
             break;
 
             case HideState.Roof:
             hideState = HideState.Roof;
             anim.SetTrigger("Roof");
             anim.ResetTrigger("HideExit");
+            sz.PlayOneShot(screamers[1]);
             break;
 
             case HideState.Pit:
             hideState = HideState.Pit;
             anim.SetTrigger("Pit");
             anim.ResetTrigger("HideExit");
+            sz.PlayOneShot(screamers[1]);
             break;
             }
 
