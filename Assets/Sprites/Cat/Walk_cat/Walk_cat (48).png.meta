@@ -5,6 +5,9 @@ TextureImporter:
   - first:
       213: 1609748544708253625
     second: Walk_cat (48)_0
+  - first:
+      213: -5815141206665085286
+    second: Walk_cat (48)_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -130,9 +133,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 91
-        y: 22
+        y: 87
         width: 1071
-        height: 926
+        height: 861
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -143,6 +146,28 @@ TextureImporter:
       bones: []
       spriteID: 9b79909c5c9f65610800000000000000
       internalID: 1609748544708253625
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Walk_cat (48)_1
+      rect:
+        serializedVersion: 2
+        x: 894
+        y: 86
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a9ebdf9e1e77c4fa0800000000000000
+      internalID: -5815141206665085286
       vertices: []
       indices: 
       edges: []
@@ -162,6 +187,7 @@ TextureImporter:
       entries: []
     nameFileIdTable:
       Walk_cat (48)_0: 1609748544708253625
+      Walk_cat (48)_1: -5815141206665085286
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
