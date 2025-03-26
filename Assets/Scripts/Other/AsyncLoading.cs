@@ -17,6 +17,8 @@ public class AsyncLoading : MonoBehaviour
     {
         Screen.fullScreen = true;
         Cursor.lockState = CursorLockMode.Locked;
+
+        PlayerPrefs.DeleteAll();
     }
 
     private void Start()

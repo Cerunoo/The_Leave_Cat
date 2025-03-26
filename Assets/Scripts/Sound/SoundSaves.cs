@@ -11,6 +11,7 @@ public class SoundSaves : MonoBehaviour
             if (value <= 100 && value >= 0)
             {
                 backSound = value;
+                PlayerPrefs.SetFloat("Back", value);
             }
         }
     }
@@ -24,13 +25,21 @@ public class SoundSaves : MonoBehaviour
             if (value <= 100 && value >= 0)
             {
                 vfxSound = value;
+                PlayerPrefs.SetFloat("VFX", value);
             }
         }
     }
 
     private void Start()
     {
+        if (PlayerPrefs.HasKey("Back"))
+        BackSound = PlayerPrefs.GetFloat("Back");
+        else
         BackSound = 75;
+
+        if (PlayerPrefs.HasKey("VFX"))
+        VfxSound = PlayerPrefs.GetFloat("VFX");
+        else
         VfxSound = 50;
     }
 

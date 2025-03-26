@@ -228,7 +228,7 @@ public class CrowdController : MonoBehaviour, ICrowdController
     {
         if (GetHideInstance() == HideState.Nowhere && direction != 0)
         {
-            Debug.LogError("Defeat, Girl Nowhere");
+            DefeatAction();
         }
     }
 
@@ -259,8 +259,15 @@ public class CrowdController : MonoBehaviour, ICrowdController
     {
         if (girlInside)
         {
-            Debug.LogError("Defeat, Girl Inside");
+            DefeatAction();
         }
+    }
+
+    private void DefeatAction()
+    {
+        direction = 0;
+        PlayerController.Instance.blockMove = true;
+        StartCoroutine(FindAnyObjectByType<HistoryController>().CheckDefeat());
     }
 
     public IEnumerator DestroyInqu()

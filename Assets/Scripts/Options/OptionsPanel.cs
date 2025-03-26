@@ -30,6 +30,8 @@ public class OptionsPanel : MonoBehaviour
 
     private void Update()
     {
+        if (FindAnyObjectByType<HistoryController>().played) return;
+
         if (Input.GetKeyUp(KeyCode.Escape) || Input.GetKeyDown(KeyCode.P))
         {
             if (!open)

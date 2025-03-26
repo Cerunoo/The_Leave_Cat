@@ -32,6 +32,11 @@ public class TimelineController : MonoBehaviour
         isPlay = false;
     }
 
+    public void PlayAsset()
+    {
+        director.Play();
+    }
+
     public void PlayAsset(PlayableAsset asset)
     {
         director.Play(asset);
