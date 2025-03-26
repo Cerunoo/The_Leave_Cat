@@ -13,8 +13,17 @@ public class AsyncLoading : MonoBehaviour
     
     private AsyncOperation operation;
 
+    [SerializeField] private Image fire;
+    private Color fColor;
+
     private void Awake()
     {
+        fColor = new Color();
+        fColor.r = 0.01f;
+        fColor.g = 0.01f;
+        fColor.b = 0.01f;
+        fColor.a = 1;
+
         Screen.fullScreen = true;
         Cursor.lockState = CursorLockMode.Locked;
 
@@ -62,6 +71,10 @@ public class AsyncLoading : MonoBehaviour
         while (!operation.isDone)
         {
             progressSlider.value = Mathf.Clamp01(operation.progress / 0.9f);
+            fColor.r = Mathf.Clamp01(operation.progress / 0.9f);
+            fColor.g = Mathf.Clamp01(operation.progress / 0.9f);
+            fColor.b = Mathf.Clamp01(operation.progress / 0.9f);
+            fire.color = fColor;
             progressText.text = " " + (progressSlider.value * 100).ToString("F0") + "%";
             yield return null;
 
@@ -71,15 +84,16 @@ public class AsyncLoading : MonoBehaviour
                 {
                     buttonActiveScene.interactable = true;
 
+                    yield return new WaitForSecondsRealtime(0.4f);
                     StartCoroutine(animationProgressText());
                     IEnumerator animationProgressText()
                     {
-                        yield return new WaitForSeconds(0.9f);
+                        yield return null;
 
-                        string[] frames = new string[]{ "", "p", "pr", "pre", "pres", "press", "press s", "press sp", "press spa", "press spac", "press spac", "press space",
-                        "press space t", "press space to", "press space to s", "press space to st", "press space to sta", "press space to star", "press space to start", "press space to start/", "press space to start.. //"};
+                        string[] frames = new string[]{ "", "s", "sp", "spa", "spac", "space", "space ч", "space чт", "space что", "space чтоб", "space чтобы", "space чтобы н",
+                        "space чтобы на", "space чтобы нач", "space чтобы нача", "space чтобы начат", "space чтобы начать", "space чтобы начать.", "space чтобы начать.."};
 
-                        string step = "  ";
+                        string step = "";
                         for (int i = 0; i < 12; i++)
                         {
                             foreach (string fr in frames)
@@ -87,7 +101,7 @@ public class AsyncLoading : MonoBehaviour
                                 progressText.text = step + fr;
                                 yield return new WaitForSeconds(0.36f);
                             }
-                            step += "   ";
+                            step += "";
                         }
                     }
                 }
