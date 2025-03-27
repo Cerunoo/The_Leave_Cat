@@ -26,6 +26,10 @@ public class HistoryController : MonoBehaviour
 
     [SerializeField] private GameObject dust;
 
+    [SerializeField, Space(5)] private Image activeStartCostil;
+    [SerializeField, Space(5)] private GameObject activeStartCostil1;
+    [SerializeField, Space(5)] private GameObject activeStartCostil2;
+
     private void Start()
     {
         source = GetComponent<AudioSource>();
@@ -116,9 +120,10 @@ public class HistoryController : MonoBehaviour
         }
     }
 
-    private IEnumerator SlideIterator(Image[] slides, bool noTransparent = false, bool block = false, bool pass = false)
+    private IEnumerator SlideIterator(Image[] slides, bool noTransparent = false, bool block = false, bool passe = false)
     {
         dust.SetActive(true);
+        source.mute = false;
 
         Time.timeScale = 0;
         played = true;
@@ -128,9 +133,15 @@ public class HistoryController : MonoBehaviour
             slides[i].color = black2;
             slides[0].color = black;
             slides[i].gameObject.SetActive(true);
-            if (pass && i == slides.Length - 1)
+            if (passe && i == slides.Length - 1)
             {
                 source.enabled = false;
+
+                pass[0].enabled = false;
+                pass[1].enabled = false;
+                activeStartCostil.enabled = true;
+                activeStartCostil1.SetActive(false);
+                activeStartCostil2.SetActive(false);
             }
             while(def.r - slides[i].color.r > 0.015f)
             {
@@ -179,5 +190,6 @@ public class HistoryController : MonoBehaviour
         played = false;
 
         dust.SetActive(false);
+        source.mute = true;
     }
 }

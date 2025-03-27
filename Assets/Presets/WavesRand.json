@@ -1,0 +1,259 @@
+{
+    "waves": [
+        {
+            "timeTo": 5,
+            "crowds": [
+                {
+                    "timeTo": 0,
+                    "speed": 17.5,
+                    "moveRight": true,
+                    "house": true,
+                    "bush": false,
+                    "roof": false,
+                    "pit": false,
+                    "walk": 2
+                },
+                {
+                    "timeTo": 6,
+                    "speed": 8.5,
+                    "moveRight": false,
+                    "house": false,
+                    "bush": false,
+                    "roof": true,
+                    "pit": true,
+                    "walk": 0
+                },
+                {
+                    "timeTo": 13,
+                    "speed": 12,
+                    "moveRight": false,
+                    "house": false,
+                    "bush": true,
+                    "roof": false,
+                    "pit": true,
+                    "walk": 1
+                }
+            ]
+        },
+        {
+            "timeTo": 4,
+            "crowds": [
+                {
+                    "timeTo": 0,
+                    "speed": 17.5,
+                    "moveRight": true,
+                    "house": false,
+                    "bush": false,
+                    "roof": false,
+                    "pit": false,
+                    "walk": 2
+                },
+                {
+                    "timeTo": 13,
+                    "speed": 12,
+                    "moveRight": false,
+                    "house": false,
+                    "bush": true,
+                    "roof": false,
+                    "pit": true,
+                    "walk": 1
+                }
+            ]
+        },
+        {
+            "timeTo": 10,
+            "crowds": [
+                {
+                    "timeTo": 1,
+                    "speed": 15.0,
+                    "moveRight": true,
+                    "house": false,
+                    "bush": true,
+                    "roof": false,
+                    "pit": false,
+                    "walk": 3
+                },
+                {
+                    "timeTo": 8,
+                    "speed": 9.0,
+                    "moveRight": true,
+                    "house": true,
+                    "bush": false,
+                    "roof": false,
+                    "pit": false,
+                    "walk": 2
+                },
+                {
+                    "timeTo": 14,
+                    "speed": 11.5,
+                    "moveRight": false,
+                    "house": false,
+                    "bush": true,
+                    "roof": false,
+                    "pit": false,
+                    "walk": 3
+                }
+            ]
+        },
+        {
+            "timeTo": 6,
+            "crowds": [
+                {
+                    "timeTo": 2,
+                    "speed": 16.0,
+                    "moveRight": false,
+                    "house": true,
+                    "bush": false,
+                    "roof": false,
+                    "pit": false,
+                    "walk": 2
+                },
+                {
+                    "timeTo": 15,
+                    "speed": 12.5,
+                    "moveRight": false,
+                    "house": false,
+                    "bush": true,
+                    "roof": true,
+                    "pit": false,
+                    "walk": 2
+                }
+            ]
+        },
+        {
+            "timeTo": 8,
+            "crowds": [
+                {
+                    "timeTo": 3,
+                    "speed": 18.0,
+                    "moveRight": true,
+                    "house": true,
+                    "bush": true,
+                    "roof": false,
+                    "pit": false,
+                    "walk": 2
+                },
+                {
+                    "timeTo": 16,
+                    "speed": 13.0,
+                    "moveRight": false,
+                    "house": false,
+                    "bush": false,
+                    "roof": false,
+                    "pit": true,
+                    "walk": 3
+                }
+            ]
+        },
+        {
+            "timeTo": 5,
+            "crowds": [
+                {
+                    "timeTo": 1,
+                    "speed": 14.0,
+                    "moveRight": true,
+                    "house": true,
+                    "bush": false,
+                    "roof": true,
+                    "pit": false,
+                    "walk": 2
+                },
+                {
+                    "timeTo": 10,
+                    "speed": 9.5,
+                    "moveRight": false,
+                    "house": false,
+                    "bush": true,
+                    "roof": false,
+                    "pit": true,
+                    "walk": 1
+                },
+                {
+                    "timeTo": 17,
+                    "speed": 11.0,
+                    "moveRight": true,
+                    "house": false,
+                    "bush": false,
+                    "roof": false,
+                    "pit": true,
+                    "walk": 0
+                }
+            ]
+        },
+        {
+            "timeTo": 6, 
+            "crowds":[
+                {
+                   "timeTo" : 2, 
+                   "speed" : 16.5, 
+                   "moveRight" : true, 
+                   "house" : true, 
+                   "bush" : false, 
+                   "roof" : false, 
+                   "pit" : true, 
+                   "walk" : 3 
+               },
+               {
+                   "timeTo" : 14, 
+                   "speed" : 12.0, 
+                   "moveRight" : false, 
+                   "house" : false, 
+                   "bush" : true, 
+                   "roof" : false, 
+                   "pit" : true, 
+                   "walk" : 2 
+               }
+           ]
+        },
+        {
+            "timeTo" : 5, 
+           "crowds":[
+               {
+                   "timeTo" : 8, 
+                   "speed" : 10.0, 
+                   "moveRight" : false, 
+                   "house" : false, 
+                   "bush" : true, 
+                   "roof" : true, 
+                   "pit" : true, 
+                   "walk" : 1 
+               },
+               {
+                   "timeTo" : 15, 
+                   "speed" : 13.5,
+                   "moveRight" : true, 
+                   "house" : false, 
+                   "bush" : false, 
+                   "roof" : true, 
+                   "pit" : false, 
+                   "walk" : 0 
+               }
+           ]
+        },
+        {
+           "timeTo" : 7, 
+           "crowds":[
+               {
+                   "timeTo" : 2, 
+                   "speed" : 17.0, 
+                   "moveRight" : true, 
+                   "house" : true, 
+                   "bush" : false, 
+                   "roof" : false, 
+                   "pit" : true, 
+                   "walk" : 3 
+               },
+               {
+                   "timeTo" : 17, 
+                   "speed" : 12.5, 
+                   "moveRight" : false, 
+                   "house" : false, 
+                   "bush" : true, 
+                   "roof" : false, 
+                   "pit" : true, 
+                   "walk" : 2 
+               }
+           ]
+        }
+    ]
+}

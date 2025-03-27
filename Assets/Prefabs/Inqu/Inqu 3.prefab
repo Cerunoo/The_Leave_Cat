@@ -209,6 +209,7 @@ GameObject:
   - component: {fileID: 5575743147646530953}
   - component: {fileID: 5513307404202220497}
   - component: {fileID: -4272119340463765546}
+  - component: {fileID: -8686881987897079315}
   m_Layer: 7
   m_Name: Inqu 3
   m_TagString: Inqu
@@ -256,7 +257,7 @@ MonoBehaviour:
   hideColor: {r: 1, g: 1, b: 1, a: 0}
   showColor: {r: 1, g: 1, b: 1, a: 1}
   speedShowSprite: 7
-  plevok: {fileID: 8300000, guid: bb4435a474e3e4c44a7b1782dae8d0de, type: 3}
+  plevok: {fileID: 0}
 --- !u!70 &2330016847657161189
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -371,7 +372,7 @@ AudioSource:
   m_audioClip: {fileID: 8300000, guid: e46ccd1de766c554c971c107bf142eb9, type: 3}
   m_Resource: {fileID: 8300000, guid: e46ccd1de766c554c971c107bf142eb9, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.6
+  m_Volume: 0.51
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -455,3 +456,15 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &-8686881987897079315
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4936219024623352600}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6cb68fb477dd35b4f9cf8ab7d6bdbb8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

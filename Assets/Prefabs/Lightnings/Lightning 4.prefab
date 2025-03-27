@@ -99,6 +99,7 @@ GameObject:
   - component: {fileID: 1387910693979144085}
   - component: {fileID: 1473179942032802989}
   - component: {fileID: 5960488223535950124}
+  - component: {fileID: 2818117355836175823}
   m_Layer: 0
   m_Name: Lightning 4
   m_TagString: Untagged
@@ -296,6 +297,18 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &2818117355836175823
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8330928912507641284}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6cb68fb477dd35b4f9cf8ab7d6bdbb8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8922244861741360144
 GameObject:
   m_ObjectHideFlags: 0

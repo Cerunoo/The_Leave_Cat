@@ -15,11 +15,13 @@ public class DangerNotify : MonoBehaviour
     public void CallRightDanger()
     {
         dangerRight.SetTrigger("Danger");
+        dangerRight.GetComponent<AudioSource>().Play();
     }
 
     public void CallLeftDanger()
     {
         dangerLeft.SetTrigger("Danger");
+        dangerLeft.GetComponent<AudioSource>().Play();
     }
 
     // Вызов от Player

@@ -8,8 +8,8 @@ public class PassMelenger : MonoBehaviour
     [SerializeField] private Text esc;
     [SerializeField] private Text again;
 
-    private float esc1;
-    private float again1;
+    [SerializeField] private float esc1;
+    [SerializeField] private float again1;
 
     private void OnEnable()
     {
@@ -55,11 +55,11 @@ public class PassMelenger : MonoBehaviour
 
             if (!Input.GetKey(KeyCode.Space))
             {
-                again1 -= Time.unscaledDeltaTime;
+                if (again1 > 0) again1 -= Time.unscaledDeltaTime;
             }
             if (!Input.GetKey(KeyCode.Escape))
             {
-                esc1 -= Time.unscaledDeltaTime;
+                if (esc1 > 0) esc1 -= Time.unscaledDeltaTime;
             }
 
             yield return null;
