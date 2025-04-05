@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SnapInput: 1
   HorizontalDeadZoneThreshold: 0.1
-  NormalSpeed: 3.5
-  MildSpeed: 2.5
+  NormalSpeed: 3.7
+  MildSpeed: 2.7
   Acceleration: 140
   GroundDeceleration: 70
